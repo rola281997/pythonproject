@@ -1,0 +1,256 @@
+{%load static%}
+
+<head>
+   
+  <script type="text/javascript" src="{% static 'js/fusioncharts.js' %}"></script>
+  <script type="text/javascript" src="{% static '/themes/fusioncharts.theme.fint.js' %}"></script>
+ <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{%static 'css/assets/img/apple-icon.png'%}">
+    <link rel="icon" type="image/png" href="{%static 'css/assets/img/favicon.ico'%}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!-- CSS Files -->
+    <link href="{%static 'css/assets/css/bootstrap.min.css'%}" rel="stylesheet" />
+    <link href="{%static 'css/assets/css/light-bootstrap-dashboard.css?v=2.0.0' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+
+<!-- <link rel="stylesheet" href="{%static 'css/style.css'%}"> -->
+<style>
+  .card {display:inline-block;}
+  .top-buffer { margin-top:20px; }
+  .bottom-buffer { margin-top:20px; }
+  /* .card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  } */
+</style>
+</head>
+<body>
+
+  <!-- <div class="sidebar-wrapper" >
+  <ul class="nav navbar-light mb-4 "style="background-color: lightgoldenrodyellow;"> -->
+    <!-- <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+  </button> -->
+    <!-- <li class="nav-item active">
+        <a class="nav-link" href="adminIndex">
+            <i class="nc-icon nc-chart-pie-35"></i>
+            <p style="text-align: center;">Dashboard</p>
+        </a>
+    </li> -->
+    <!-- navvvvvvvvvvvvvvvvvvvv barrrrrrrrrrrr -->
+    <!-- <li class="nav-item dropdown no-arrow" style="margin-top: 19px;color: white;">
+
+      <form class="form-inline">
+          {% if user.is_authenticated%}
+          <a class="mr-2 d-lg-inline d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{% url 'logout' %}">Logout</a>
+                {%if user.is_staff%}
+                <a class="mr-2 d-lg-inline d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="adminIndex">Show Admin Area</a>
+                {% endif %}
+          {% else %}
+          <a class="mr-2 d-lg-inline d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{% url 'login' %}">Login</a>
+          <a class="mr-2 d-lg-inline d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{% url 'register' %}">Register</a>
+          {% endif %} -->
+
+          <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <h1>Dashboard</h1>
+            <a class="mr-2 btn btn-sm btn-primary " href="{% url 'logout' %}" style="display: flex;align-self: flex-end;">Logout</a>
+          
+           
+          </nav>
+          <div class="d-flex" id="wrapper">
+
+            <!-- Sidebar -->
+            <div class=" border-right text-light" style="background-color:rgb(53, 52, 52);" id="sidebar-wrapper">
+              <div class="sidebar-heading">Welcome Our admin</div>
+              <div class="list-group list-group-flush ">
+                <a href="users" class="list-group-item list-group-item-action ">Users</a>
+                <a href="posts" class="list-group-item list-group-item-action ">Posts</a>
+                <a href="cats" class="list-group-item list-group-item-action ">Categories</a>
+                <a href="words" class="list-group-item list-group-item-action ">Forbidens</a>
+                <!-- <a href="notes" class="list-group-item list-group-item-action ">Notifications</a> -->
+              </div>
+            </div>
+            
+         
+  
+    <div class="content mt-5">
+      <div class="container-fluid">
+          <div class="row ">
+              <div class="col d-flex justify-content-center mb-2 ">
+                  <div class="card " style="width: 70rem;">
+                    <div class="card-header" style="background-color: rgb(96, 170, 231);">
+<span style="font-size: 25 ;color: azure;">Users</span> <a href="users" style="color:darkslateblue;">Show more</a>
+<br>
+ <!-- User -->
+                    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table border = 1 class="table table-light">
+            <th>ID</th>
+            <th>User Name</th>
+            <th>E-mail</th>
+            <th>Admin</th>
+        
+        {%for user in all_users%}
+        <!-- {{forloop.counter}} -->
+        {%if forloop.counter <= 5%}
+
+          <tr>
+            <td>{{user.id}}</td>
+        
+        
+            <td>{{user.username}}</td>
+        
+        
+                <td>{{user.email}}</td>
+            
+                    <td>{{user.is_staff}}</td>
+                
+                     
+          </tr>
+          {%endif%}
+          {%endfor%}
+        </table>
+      </div>
+    </div>
+                  </div>
+              </div>
+<!-- posts -->
+<div class="col d-flex justify-content-center mb-2 ">
+  <div class="card " style="width: 70rem;">
+    <div class="card-header" style="background-color: rgb(96, 170, 231);">
+<br>
+<span style="font-size: 25 ;color: azure;">Posts</span> <a href="posts" style="color:darkslateblue;">Show more</a>
+<br>
+</div>
+    <div class="card-body">
+      <div class="table-responsive">
+      <table border = 1 class="table table-light">
+          <th>Id</th>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Date</th>
+          <th>Owner</th>
+          <th>Post Category</th>
+      
+      {%for post in all_posts%}
+      <!-- {{forloop.counter}} -->
+       {%if forloop.counter <= 5%}
+        <tr>
+          <td>{{post.id}}</td>
+      
+      
+          <td>{{post.title}}</td>
+      
+      
+              <td>{{post.content}}</td>
+          
+              <td>{{post.Date}}</td>
+              <td>{{post.Owner}}</td>
+              <td>{{post.Category_id}}</td>
+        </tr>
+     
+        {%endif%}
+        {%endfor%}
+      </table>
+      </div>
+  </div>
+</div>
+</div>
+          </div>
+  <!-- Cats -->
+  <div class="row">
+    <div class="col d-flex justify-content-center mb-2 ">
+      <div class="card" style="width: 70rem;">
+        <div class="card-header" style="background-color: rgb(96, 170, 231);">
+  <br>
+  <span style="font-size: 25 ;color: azure;">Categories</span> <a href="cats" style="color:darkslateblue;">Show more</a>
+  <br>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+    <table border = 1 class="table table-light">
+        <th>Id</th>
+        <th>Name</th>
+
+    {%for cat in all_cats%}
+    <!-- {{forloop.counter}} -->
+     {%if forloop.counter <= 5%}
+      <tr>
+        <td>{{cat.id}}</td>
+    
+        <td>{{cat.name}}</td>
+      </tr>
+      {%endif%}
+      {%endfor%}
+    </table>
+    </div>
+</div>
+  </div>
+          </div>
+          <!-- <div class="col d-flex justify-content-center mb-2 ">
+            <div class="card" style="width: 100rem;">
+              <div class="card-header" style="background-color: rgb(96, 170, 231);">
+                    <h4 class="card-title" style="color: seashell;">Management</h4>
+                    <p class="card-category">Last Campaign Performance</p>
+                </div>
+                <div class="card-body ">
+                  <img src="{% static 'css/assets/img/stat1.jpg'%}" class="img-responsive" style="width: 200px;height: 200px;">
+                  <div id="chart-1">{{ output|safe }}</div>
+                </div>
+            </div>
+        </div> -->
+
+<!-- Forbiden Words -->
+<div class="col d-flex justify-content-center mb-2 ">
+  <div class="card" style="width: 70rem;">
+    <div class="card-header" style="background-color: rgb(96, 170, 231);">
+<br>
+<span style="font-size: 25 ;color: azure;">Forbiden Words</span> <a href="words" style="color:darkslateblue;">Show more</a>
+<br>
+</div>
+  <div class="table-responsive">
+  <table class="table-light">
+  <th>Word</th>
+  {%for word in all_words%}
+  <tr>
+    <td>{{word.word}}</td>
+  </tr>
+  {%endfor%}
+</table>
+</div>
+</div>
+</div>
+
+
+
+<!-- <div class="col d-flex justify-content-center mb-2 ">
+  <div class="card" style="width: 100rem;">
+    <div class="card-header" style="background-color: rgb(96, 170, 231);">
+          <h4 class="card-title" style="color: seashell;">Our Admin</h4>
+          <p class="card-category">Last Campaign Performance</p>
+      </div>
+      <div class="card-body ">
+        <img src="{% static 'css/assets/img/503930-637009475898890538-16x9.jpg'%}" class="img-responsive" style="width: 200px;height: 200px;">
+          <div class="stats">
+              <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+          </div>
+      </div>
+  </div> -->
+</div>
+</div>
+<div class="primary ">
+  <p style="text-align: center; size:18px ;">@Copy Rights</p>
+  {% include 'foot.html' %}
+  </div>
+</div>
+                </div>
+        </div>
+</body>

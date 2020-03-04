@@ -1,0 +1,32 @@
+
+{% load static %}
+<html>
+{% include 'topPage.html' %}
+<body id="page-top">
+	  <!-- Page Wrapper -->
+		<!-- Main Content -->
+       <div id="content">
+           {% include "base.html" %}
+           {% block content %}
+            {% load crispy_forms_tags %}
+
+            <div class="border p-4 mb-5">
+                <legend class="border-bottom pb-1 mb-3 ">register</legend>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <input class="btn  mt-4 btn-primary" type="submit" value="register">
+                </form>
+                <div class="border-top mt-4 pt-2">
+                    <small>if you have account enter here <a href="/login"> login</a></small>
+                </div>
+            </div>
+            {% endblock content %}
+	    </div>
+		{% include "footer.html" %}
+	</div>
+{% include 'endPage.html' %}
+  </div>
+</body>
+
+</html>
