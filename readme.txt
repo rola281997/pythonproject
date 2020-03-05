@@ -14,3 +14,10 @@ Ahmed Mamdouh
 Show all categories
 Show top five posts
 Comment feature
+
+
+Mahmoud Mohamed Ramadan
+show posts by category
+search by post title
+reply feature
+like and dislike features
