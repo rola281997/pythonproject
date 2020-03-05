@@ -5,3 +5,12 @@ registeration with authentication
 logout 
 block function
 check for display button in nav bar 
+
+
+
+
+
+Ahmed Mamdouh
+Show all categories
+Show top five posts
+Comment feature
